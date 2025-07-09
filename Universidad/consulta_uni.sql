@@ -12,7 +12,7 @@ SELECT persona.apellido1, persona.apellido2, persona.nombre FROM persona RIGHT J
 SELECT departamento.nombre FROM departamento LEFT JOIN profesor ON departamento.id = profesor.id_departamento LEFT JOIN persona ON profesor.id_profesor = persona.id WHERE profesor.id_profesor IS NULL;
 SELECT persona.apellido1, persona.apellido2, persona.nombre FROM persona RIGHT JOIN profesor ON persona.id = profesor.id_profesor LEFT JOIN asignatura ON profesor.id_profesor = asignatura.id_profesor WHERE asignatura.nombre IS NULL;
 SELECT asignatura.nombre FROM asignatura LEFT JOIN profesor ON asignatura.id_profesor = profesor.id_profesor WHERE profesor.id_profesor IS NULL;
-SELECT departamento.nombre, asignatura.nombre FROM departamento LEFT JOIN profesor ON departamento.id = profesor.id_departamento LEFT JOIN asignatura ON profesor.id_profesor = asignatura.id_profesor WHERE asignatura.nombre IS NULL;
+SELECT DISTINCT departamento.nombre FROM departamento LEFT JOIN profesor ON departamento.id = profesor.id_departamento LEFT JOIN asignatura ON profesor.id_profesor = asignatura.id_profesor WHERE asignatura.nombre IS NULL;
 SELECT COUNT(*) FROM persona WHERE tipo = "alumno";
 SELECT COUNT(*) FROM persona WHERE tipo = "alumno" AND fecha_nacimiento BETWEEN "1999-01-01" AND "1999-12-31";
 SELECT departamento.nombre, COUNT(profesor.id_profesor) FROM departamento LEFT JOIN profesor ON departamento.id = profesor. id_departamento GROUP BY departamento.nombre;
